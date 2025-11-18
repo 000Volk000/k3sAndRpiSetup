@@ -4,10 +4,16 @@ This is a document of my process setting up from scratch k3s and all the needs t
 
 >[!IMPORTANT]
 >This is my first kubernetes project.<br>Some things done might not be the best industry practice. 
-## Distribution
-The distribution of this kubernetes setup will be created with a:
-	Raspberry Pi 5 ...
+## Goal
+The final distribution of this kubernetes setup will be a:
+- K3S for the kubernetes backend.
+- Raspberry Pi 5 as the master (and only) node.<br>(Connected directly to a generic ISP router via ethernet connection with a DHCP reserved IP address)
+- Wildcard domain being handled by [deSEC](https://desec.io) as the DNS registry.
+- Automatic, no-charge, SSL certificate renewal.
+- Proxy handling the domain.
+- Automatic deployment based on git.
 ## Materials Used
+This are the exact materials i made this setup work, they can vary:
 - 1 Raspberry Pi 5 (4 GB Ram) ...
 ## License
 Created under the MIT License. See [LICENSE](https://github.com/000Volk000/k3sAndRpiSetup/blob/main/LICENSE) for more information.
