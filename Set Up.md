@@ -1,7 +1,7 @@
-To start of we need to physically connect all the accessories mentioned before to our Raspberry Pi 5 ([[Raspberry Pi Hardware]])
+To start of we need to physically connect all the accessories mentioned before to our Raspberry Pi 5 ([Raspberry Pi Hardware](Raspberry%20Pi%20Hardware.md))
 
-Once done we can proceed with the software configuration on the Raspberry Pi 5 ([[Raspberry Pi Software]])
+Once done we can proceed with the software configuration on the Raspberry Pi 5 ([Raspberry Pi Software](Raspberry%20Pi%20Software.md))
 
-Then we should configure all the needed on our internet router ([[Router Configuration]])
+Then we should configure all the needed on our internet router ([Router Configuration](Router%20Configuration.md))
 
-And lastly we can create and set up the Dynamic DNS ([[DNS Configuration]])
+And lastly we can create and set up the Dynamic DNS ([DNS Configuration](DNS%20Configuration.md))

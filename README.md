@@ -23,11 +23,11 @@ This are the exact materials i made this setup work, they can vary in your case:
 - 1 Kingston microSD (CANVAS Select Plus)
 - 1 Sansdisk NVMe SSD (SN5100)
 ## Index
-- [[Set Up]]
-	- [[Raspberry Pi Hardware]]
-	- [[Raspberry Pi Software]]
-	- [[Router Configuration]]
-	- [[DNS Configuration]]
+- [Set Up](Set%20Up.md)
+	- [Raspberry Pi Hardware](Raspberry%20Pi%20Hardware.md)
+	- [Raspberry Pi Software](Raspberry%20Pi%20Software.md)
+	- [Router Configuration](Router%20Configuration.md)
+	- [DNS Configuration](DNS%20Configuration.md)
 ## License
 Created under the MIT License. See [LICENSE](https://github.com/000Volk000/k3sAndRpiSetup/blob/main/LICENSE) for more information.
 
