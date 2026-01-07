@@ -13,8 +13,21 @@ The final distribution of this kubernetes setup will be a:
 - Proxy handling the domain.
 - Automatic deployment based on git.
 ## Materials Used
-This are the exact materials i made this setup work, they can vary:
-- 1 Raspberry Pi 5 (4 GB Ram) ...
+This are the exact materials i made this setup work, they can vary in your case:
+- 1 Raspberry Pi 5 (4 GB Ram)
+- 1 Raspberry Pi Active Cooler
+- 1 Raspberry Pi M.2 HAT+
+- 1 Raspberry Pi Power Supply
+- 1 Raspberry Pi Case
+- 1 Ethernet Cable
+- 1 Kingston microSD (CANVAS Select Plus)
+- 1 Sansdisk NVMe SSD (SN5100)
+## Index
+- [[Set Up]]
+	- [[Raspberry Pi Hardware]]
+	- [[Raspberry Pi Software]]
+	- [[Router Configuration]]
+	- [[DNS Configuration]]
 ## License
 Created under the MIT License. See [LICENSE](https://github.com/000Volk000/k3sAndRpiSetup/blob/main/LICENSE) for more information.
 
