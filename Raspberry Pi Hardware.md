@@ -16,3 +16,18 @@ To do that we need to remove the plastic cover that is situated on the top-right
 <div align="center">
   <img src="assets/hardware/activeCooler/connector.jpg" alt="connector" width="400">
 </div>
+
+
+## Pimoroni M.2 Base
+To start of we need to put 4 of the small volts to the corners of the base and screw the standoff to the volt, like this
+<div align="center">
+  <img src="assets/hardware/m2Base/standoffs.jpg" alt="standoffs" width="400">
+</div>
+Now whe shall put a thin screw and a nut on the lenght of our NVMe
+<div align="center">
+  <img src="assets/hardware/m2Base/nvmeScrew.jpg" alt="nvmeScrew" width="400">
+</div>
+To then place the NVMe connecting it to the M.2 M-key and slipping another nut to tight the NVMe in place, should be like this
+<div align="center">
+  <img src="assets/hardware/m2Base/nvmePosition.jpg" alt="nvmePosition" width="400">
+</div>
