@@ -18,7 +18,7 @@ This are the exact materials i made this setup work, they can vary in your case:
 - 1 Raspberry Pi Active Cooler
 - 1 Pimoroni M.2 Base for RPI5
 - 1 Raspberry Pi Power Supply
-- 1 Geekpi 4 Layers Acrylic Case
+- 1 Geeekpi 4 Layers Acrylic Case
 - 1 Ethernet Cable
 - 1 Kingston microSD (CANVAS Select Plus)
 - 1 Team Group NVMe SSD (MP33 PRO)

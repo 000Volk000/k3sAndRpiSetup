@@ -43,3 +43,26 @@ Lastly we place the adapter below of the Raspberry carefully and we place 4 of t
 <div align="center">
   <img src="assets/hardware/m2Base/finished.jpg" alt="finished" width="400">
 </div>
+
+
+## Geeekpi 4 Layers Acrylic Case
+Once done with the nvme adapter we'll replace one by one the lower screws of the nvme base with the screws that come with the Geeekpi Case
+<div align="center">
+  <img src="assets/hardware/case/screwsReplace.jpg" alt="screwsReplace" width="400">
+</div>
+Now we place it onto the acrylic base of the case and secure it in place with 4 thin screws
+<div align="center">
+  <img src="assets/hardware/case/placedBase.jpg" alt="placedBase" width="400">
+</div> 
+Then we shall put the big M3 brass spacer as "pillars" on the 4 sides of the base, putting the 4 bigger screws below them
+<div align="center">
+  <img src="assets/hardware/case/placedPillars.jpg" alt="placedPillars" width="400">
+</div> 
+And for the last touch in the hardware aspect, we'll put the acrylic top on the top of the pillars (I concatenated 2 of them because of the extra height of the nvme base) and place the trims over
+<div align="center">
+  <img src="assets/hardware/case/finishedHardware.jpg" alt="finishedHardware" width="400">
+</div> 
+
+
+## Next Step
+All the hardware installation is done, the next thing we are going to do is to configure the software needed to make the Raspberry Pi work as intended -> [Raspberry Pi Software](Raspberry%20Pi%20Software.md)
