@@ -68,16 +68,6 @@ Once done we can shutdown our Raspberry Pi and remove the microSD and it should 
 
 
 ## O.S. Config
-Lets do some internal tweaks on the Raspberry Pi O.S.
-
-To start of lets make our SSD work a little bit faster by doing the pciexpress work at gen3 (is gen2 as default) to do that we need to modify /boot/firmware/config.txt and add a line, to do that we can type:
-```bash
-sudo vim.tiny /boot/firmware/config.txt
-```
-Once we are in the file we need to add the following line to the [all] section at the end of the file:
-```bash
-dtparam=pciex1_gen=3
-```
 And lastly we'll change some ssh config to prevent attacks, to do that lets modify the sshd_config.
 ```bash
 sudo vim.tiny /etc/ssh/sshd_config
