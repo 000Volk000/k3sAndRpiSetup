@@ -14,11 +14,11 @@ The final distribution of this kubernetes setup will be a:
 - Automatic deployment based on git.
 ## Materials Used
 This are the exact materials i made this setup work, they can vary in your case:
-- 1 Raspberry Pi 5 (4 GB Ram)
+- 1 Raspberry Pi 5 (8 GB Ram)
 - 1 Raspberry Pi Active Cooler
 - 1 Pimoroni M.2 Base for RPI5
 - 1 Raspberry Pi Power Supply
-- 1 Raspberry Pi Case
+- 1 Geekpi 4 Layers Acrylic Case
 - 1 Ethernet Cable
 - 1 Kingston microSD (CANVAS Select Plus)
 - 1 Team Group NVMe SSD (MP33 PRO)
