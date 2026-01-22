@@ -24,7 +24,7 @@ Thats done, now connect the ethernet cable from the raspberry to your router, pu
 
 
 ## NVMe Drive as Main
-Once connected and running, we'll access it via ssh to make the nvme be the OS host and some internal tweaks.
+Once connected and running, we'll access it via ssh to make the nvme be the OS host and only disk.
 
 To get the current assigned ip we'll watch on the router's admin web which device is connected to the LAN and what is his ip address
 <div align="center">
@@ -65,3 +65,33 @@ sudo -E rpi-imager
 And fulfill every step like we did the first time with the microSD (Be patient is going to be slow).
 
 Once done we can shutdown our Raspberry Pi and remove the microSD and it should boot nicely from the NVMe.
+
+
+## O.S. Config
+Lets do some internal tweaks on the Raspberry Pi O.S.
+
+To start of lets make our SSD work a little bit faster by doing the pciexpress work at gen3 (is gen2 as default) to do that we need to modify /boot/firmware/config.txt and add a line, to do that we can type:
+```bash
+sudo vim.tiny /boot/firmware/config.txt
+```
+Once we are in the file we need to add the following line to the [all] section at the end of the file:
+```bash
+dtparam=pciex1_gen=3
+```
+And lastly we'll change some ssh config to prevent attacks, to do that lets modify the sshd_config.
+```bash
+sudo vim.tiny /etc/ssh/sshd_config
+```
+Once inside, we'll comment everything, only having the next lines:
+```bash
+Include /etc/ssh/sshd_config.d/*.conf
+PubkeyAuthentication yes
+AuthorizedKeysFile      .ssh/authorized_keys
+PasswordAuthentication no
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+```
+Thats all we need to do on the OS, we didnt put a firewall like iptables because we are going to port forward only the port 22, 80 and 443 so every attack to any other port will not work and stay at the router.
+
+
+## Next Step
+All the software initial installation and configuration is done, the next thing we are going to do is to configure the router to give the Raspberry Pi an static ip address and port forwarding -> [Router Configuration](Router%20Configuration.md)
