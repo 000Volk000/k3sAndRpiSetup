@@ -15,6 +15,8 @@ Once get, shutdown the Raspberry Pi and open the admin page of your ethernet rou
 Every ISP is different, you need to find something similar to `Static DHCP - Local Network`, in my case it is on the Advanced mode on Configuration -> LAN.
 
 Once found, you need to place the MAC we got before and assign an IP address of your preference, remember that it should be on your local network (keeping the same network address and only changing the host address)
+
+Avoid the ip addresses that are close to the start of the dhcp assignment (The ones from 0-100 or so) because they can be assigned to other local devices and not your Raspberry.
 <div align="center">
   <img src="assets/router/staticIp/dhcp.png" alt="dhcp" width="600">
 </div>
