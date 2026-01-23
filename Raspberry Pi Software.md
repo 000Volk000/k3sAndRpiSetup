@@ -68,6 +68,16 @@ Once done we can shutdown our Raspberry Pi and remove the microSD and it should 
 
 
 ## O.S. Config
+We'll do that when we shutdown our Raspberry the pciexpress port shutdowns too, so we can avoid data loss and similar related things:
+
+To do that we'll need to change POWER_OFF_ON_HALT to 1 on the eeprom (bootloader) of the Raspberry, so, to edit it let's do:
+```bash
+sudo rpi-eeprom-config -e
+```
+And change or add the next line:
+```bash
+POWER_OFF_ON_HALT=1
+```
 And lastly we'll change some ssh config to prevent attacks, to do that lets modify the sshd_config.
 ```bash
 sudo vim.tiny /etc/ssh/sshd_config
