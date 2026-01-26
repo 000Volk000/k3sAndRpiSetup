@@ -34,3 +34,49 @@ sudo cp /usr/bin/deSEC_DynDNS /usr/bin/deSEC_DynDNS2
 ```
 
 And now change the `DOMAIN_NAME` on /usr/bin/deSEC_DynDNS2
+
+## Automate Updates
+
+Once got both the scripts working we'll create a systemd timer and systemd service to update the DNS automatically.
+
+To do that, we need to create the `/etc/systemd/system/dynDNS.timer` and `/etc/systemd/system/dynDNS.service`, with the following content each one:
+
+- /etc/systemd/system/dynDNS.timer
+
+```bash
+[Unit]
+Description=Update DNS timer
+
+[Timer]
+Persistent=true
+# Use a randomly chosen time:
+OnCalendar=*-*-* 4:35
+# add extra delay, here up to 1 hour:
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target
+```
+
+-  /etc/systemd/system/dynDNS.service
+
+```bash
+[Unit]
+Description=Update DNS service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/deSEC_DynDNS
+ExecStart=/usr/bin/deSEC_DynDNS2
+User=example
+```
+
+Once created both the files, you should enable and start the timer with:
+
+```bash
+sudo systemctl enable dynDNS.timer
+sudo systemctl start dynDNS.timer
+```
+
+## Next Step
+We already did everything with the domain, dns, certificates and that, now lets start with kubernetes -> [K3S](K3S.md)

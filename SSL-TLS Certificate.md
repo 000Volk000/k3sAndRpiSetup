@@ -56,7 +56,7 @@ ls -1 ./.lego/certificates
 ## Renewal
 Lets make a systemd timer and systemd service to renew the certificate automatically.
 
-To do that we need to create the `/etc/systemd/system/cert_renewal.timer` and `/etc/systemd/system/cert_renewal.service`, with the following content each one:
+To do that, we need to create the `/etc/systemd/system/cert_renewal.timer` and `/etc/systemd/system/cert_renewal.service`, with the following content each one:
 
 - /etc/systemd/system/cert_renewal.timer
 
