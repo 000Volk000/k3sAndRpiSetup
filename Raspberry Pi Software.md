@@ -35,13 +35,15 @@ Once get the ip address, we can connect via ssh.
   <img src="assets/software/osConfig/ssh.png" alt="ssh" width="600">
 </div>
 To start of, lets update the system and the eeprom bootloader to make all work flawlessly, we can do this with:
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo rpi-eeprom-update -a
 sudo reboot
 ```
 Now, lets check if our Raspberry Pi can read the NVMe that we installed on the pimroni base to do that you should check if the /dev/nvme0n1 appears on your system, you can watch it with this commands:
-```shell
+
+```bash
 lsblk
 ls /dev/nvme0
 ```
@@ -51,14 +53,17 @@ ls /dev/nvme0
 If it appears, we can continue.
 
 We'll install the Raspberry Pi Imager software on our Raspberry so we can install from there to the nvme the OS. You can install it (And some libraries to make it work) with:
-```shell
+
+```bash
 sudo apt install rpi-imager libopengl0 ffmpeg libsm6 libxext6 libegl1 -y
 ```
 Now, we need to make ssh with the -X flag
+
 ```bash
 ssh -X name@ip
 ```
 Execute the rpi-imager with
+
 ```bash
 sudo -E rpi-imager
 ```
@@ -71,18 +76,22 @@ Once done we can shutdown our Raspberry Pi and remove the microSD and it should 
 We'll do that when we shutdown our Raspberry the pciexpress port shutdowns too, so we can avoid data loss and similar related things:
 
 To do that we'll need to change POWER_OFF_ON_HALT to 1 on the eeprom (bootloader) of the Raspberry, so, to edit it let's do:
+
 ```bash
 sudo rpi-eeprom-config -e
 ```
 And change or add the next line:
+
 ```bash
 POWER_OFF_ON_HALT=1
 ```
 And lastly we'll change some ssh config to prevent attacks, to do that lets modify the sshd_config.
+
 ```bash
 sudo vim.tiny /etc/ssh/sshd_config
 ```
 Once inside, we'll comment everything, only having the next lines:
+
 ```bash
 Include /etc/ssh/sshd_config.d/*.conf
 PubkeyAuthentication yes
