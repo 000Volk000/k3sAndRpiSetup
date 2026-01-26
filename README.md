@@ -9,7 +9,7 @@ The final distribution of this kubernetes setup will be a:
 - K3S for the kubernetes backend.
 - Raspberry Pi 5 as the master (and only) node.<br>(Connected directly to a generic ISP router via ethernet connection with a DHCP reserved IP address)
 - Wildcard domain being handled by [deSEC](https://desec.io) as the DNS registry.
-- Automatic, no-charge, SSL certificate renewal.
+- Automatic, no-charge, SSL/TLS certificate renewal.
 - Proxy handling the domain.
 - Automatic deployment based on git.
 ## Materials Used
@@ -31,6 +31,7 @@ This are the exact materials i made this setup work, they can vary in your case:
 - [DDNS Instalation](DDNS%20Instalation.md)
 	- [SSL-TLS Certificate](SSL-TLS%20Certificate.md)
 	- [DNS Update](DNS%20Update.md)
+- [K3S](K3S.md)
 ## License
 Created under the MIT License. See [LICENSE](https://github.com/000Volk000/k3sAndRpiSetup/blob/main/LICENSE) for more information.
 

@@ -52,3 +52,56 @@ It will take a while and when finished it should have created a directory .lego 
 ```bash
 ls -1 ./.lego/certificates
 ```
+
+## Renewal
+Lets make a systemd timer and systemd service to renew the certificate automatically.
+
+To do that we need to create the `/etc/systemd/system/cert_renewal.timer` and `/etc/systemd/system/cert_renewal.service`, with the following content each one:
+
+- /etc/systemd/system/cert_renewal.timer
+
+```bash
+[Unit]
+Description=Renew certificates timer
+
+[Timer]
+Persistent=true
+# avoid:
+#OnCalendar=*-*-* 00:00:00
+#OnCalendar=daily
+
+# instead, use a randomly chosen time:
+OnCalendar=*-*-* 3:35
+# add extra delay, here up to 1 hour:
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target
+```
+
+-  /etc/systemd/system/cert_renewal.service
+
+```bash
+[Unit]
+Description=Renew certificates service
+
+[Service]
+Type=oneshot
+Environment="DESEC_TOKEN=x-xxxxxxxxxxxxxxxxxxxxxxxxxx"
+ExecStart=/usr/bin/lego --dns desec -d '*.example.com' -d example.com --dns.propagation-wait 300s --path /path/.lego renew
+User=example
+```
+
+	Where `/path` is the path where initially generated the lego run command
+
+Once created both the files, you should enable and start the timer with:
+
+```bash
+sudo systemctl enable cert_renewal.timer
+sudo systemctl start cert_renewal.timer
+```
+
+And that's it, now we have a wildcard certificate acquired and renewed automatically.
+
+## Next Step
+Now we have an ssl/tts certificate always working, now, lets make our dns update its IP address like a dynDNS -> [DNS Update](DNS%20Update.md)
