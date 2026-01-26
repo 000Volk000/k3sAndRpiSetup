@@ -21,6 +21,7 @@ Avoid the ip addresses that are close to the start of the dhcp assignment (The o
   <img src="assets/router/staticIp/dhcp.png" alt="dhcp" width="600">
 </div>
 When your router reboots you can start your Raspberry Pi and it should get the IP address you just assigned (Remember that now the ssh command changes to the new ip).
+
 ## Port Forwarding
 To get the Port Forwarding to work you will need a PublicIP address, it doesn't need to be static, you can be behind a NAT on your ISP, but make sure you are not behind a CGNAT, if you are you should call your ISP so they give you a public ip address, each company handles it different.
 
@@ -35,5 +36,6 @@ Once applied it should work, to try if it applied correctly we can try to do an 
   <img src="assets/router/portForwarding/publicSsh.png" alt="publicSsh" width="500">
 </div>
 If we can access to our Raspberry Pi, the port forwarding is set and done.
+
 ## Next Step
 All the router touches are done, the next and last thing to do for the set up is to configure the DNS to get a domain pointing to our public IP-> [DNS Configuration](DNS%20Configuration.md)
