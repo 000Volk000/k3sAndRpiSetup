@@ -8,7 +8,7 @@ Once created and account and created your domain you will get something like thi
 <div align="center">
   <img src="assets/dns/domainConfig/records.png" alt="records" width="600">
 </div>
-Here lets create 2 records (With the + icon) 1 type A and 1 type CNAME.
+Here lets create 2 records (With the + icon) 1 type A for the base url and other type A for the wildcard.
 ## Type A
 This record is what tells what is our ip to access, so we need to put the public ip address that we got on the previous step.
 <div align="center">
@@ -19,19 +19,19 @@ Once done press save and when the DNS propagation takes effect you can access to
   <img src="assets/dns/typeA/sshDomain.png" alt="sshDomain" width="600">
 </div>
 
-## Type CNAME
+## WildCard
 Lastly we want that every subdomain `*.yourdomain.dedyn.io` or `*.yourdomain` comes to our public IP address too and handle it with the Raspberry Pi.
 
 Why? Because in that way we can access our apps with the desired subdomain for example jellyfin.yourdomain.dedyn.io having a easier direct access.
 
-Just like in the last section, we press the + icon but this time select the CNAME option but now we'll put in Subname an * and in Target domain name our domain ending with a dot.
+Just like in the last section, we press the + icon but this time select the A option again but now we'll put in Subname an *
 <div align="center">
-  <img src="assets/dns/typeCname/typeCname.png" alt="typeCname" width="350">
+  <img src="assets/dns/wildcard/wildcard.png" alt="wildcard" width="350">
 </div>
 And just like before, if you wait to the DNS propagation to make effect you can try to do ssh to any subdomain and it should work.
 <div align="center">
-  <img src="assets/dns/typeCname/sshCname.png" alt="sshCname" width="600">
+  <img src="assets/dns/wildcard/sshCname.png" alt="sshCname" width="600">
 </div>
 
 ## Next Step
-Now we have a domain and any subdomain pointing to our IP address but we need to get the ssl certificate and make it Dynamic so if our ip address change it doesn't break anything -> [DDNS Instalation](DDNS%20Instalation.md)
+Now we have a domain and any subdomain pointing to our IP address but we need to get the ssl/tls certificate and make it Dynamic so if our ip address change it doesn't break anything -> [DDNS Instalation](DDNS%20Instalation.md)

@@ -29,7 +29,7 @@ This are the exact materials i made this setup work, they can vary in your case:
 	- [Router Configuration](Router%20Configuration.md)
 	- [DNS Configuration](DNS%20Configuration.md)
 - [DDNS Instalation](DDNS%20Instalation.md)
-	- [SSL Certificate](SSL%20Certificate.md)
+	- [SSL-TLS Certificate](SSL-TLS%20Certificate.md)
 	- [DNS Update](DNS%20Update.md)
 ## License
 Created under the MIT License. See [LICENSE](https://github.com/000Volk000/k3sAndRpiSetup/blob/main/LICENSE) for more information.
