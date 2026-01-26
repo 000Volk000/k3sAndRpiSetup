@@ -31,7 +31,9 @@ And we are gonna add 3 rules to the port forwarding, we want to make that all th
 <div align="center">
   <img src="assets/router/portForwarding/portConfig.png" alt="portConfig" width="500">
 </div>
-Once applied it should work, to try if it applied correctly we can try to do an ssh to our Raspberry but changing the IP address (Before 10.0.0.200) to the public IP we can get if we go to pages like [whatsmyipadress.com](https://whatismyipaddress.com/)
+
+Once applied it should work, to try if it applied correctly we can try to do an ssh to our Raspberry but changing the IP address (Before 10.0.0.200) to the public IP we can get if we go to pages like [whatsmyipaddress](https://whatismyipaddress.com) or similar.
+
 <div align="center">
   <img src="assets/router/portForwarding/publicSsh.png" alt="publicSsh" width="500">
 </div>
