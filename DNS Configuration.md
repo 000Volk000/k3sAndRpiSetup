@@ -18,6 +18,7 @@ Once done press save and when the DNS propagation takes effect you can access to
 <div align="center">
   <img src="assets/dns/typeA/sshDomain.png" alt="sshDomain" width="600">
 </div>
+
 ## Type CNAME
 Lastly we want that every subdomain `*.yourdomain.dedyn.io` or `*.yourdomain` comes to our public IP address too and handle it with the Raspberry Pi.
 
@@ -31,5 +32,6 @@ And just like before, if you wait to the DNS propagation to make effect you can 
 <div align="center">
   <img src="assets/dns/typeCname/sshCname.png" alt="sshCname" width="600">
 </div>
+
 ## Next Step
 Now we have a domain and any subdomain pointing to our IP address but we need to get the ssl certificate and make it Dynamic so if our ip address change it doesn't break anything -> [DDNS Instalation](DDNS%20Instalation.md)
