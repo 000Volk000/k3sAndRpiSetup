@@ -32,6 +32,8 @@ This are the exact materials i made this setup work, they can vary in your case:
 	- [SSL-TLS Certificate](SSL-TLS%20Certificate.md)
 	- [DNS Update](DNS%20Update.md)
 - [K3S](K3S.md)
+	- [K3S Installation](K3S%20Installation.md)
+	- [K3S Continuous Deployment](K3S%20Continuous%20Deployment.md)
 ## License
 Created under the MIT License. See [LICENSE](https://github.com/000Volk000/k3sAndRpiSetup/blob/main/LICENSE) for more information.
 
