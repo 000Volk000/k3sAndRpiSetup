@@ -87,3 +87,66 @@ git push origin v1.0.0
 ```
 
 It will automatically trigger and push the image to the ghcr.io repo.
+
+## Chart Updater
+
+Thats good, but we need to update the charts repo we created that is being watched by ArgoCD.
+
+To do so, i'll add the following section to our `.github/workflows/deploy.yaml`:
+
+```yaml
+  update-charts:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.CHARTS_REPOSITORY }}
+          path: charts
+          token: ${{ secrets.CHARTS_REPO_PAT }}
+
+      - name: Update image tag
+        run: |
+          NEW_TAG=${{ github.ref_name }}
+          TARGET_DIR="charts/${{ env.CHARTS_DIRECTORY }}"
+
+          sed -i "s|image: ${{ env.IMAGE_NAME }}:.*|image: ${{ env.IMAGE_NAME }}:$NEW_TAG|g" "$TARGET_DIR/deployment.yaml"
+          sed -i "s|image: ${{ env.IMAGE_NAME }}:.*|image: ${{ env.IMAGE_NAME }}:$NEW_TAG|g" "$TARGET_DIR/bingbong-cronjob.yaml"
+
+      - name: Commit and push changes
+        run: |
+          cd charts
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+
+          if ! git diff --staged --quiet; then
+            git commit -m "ci: Update image version to ${{ github.ref_name }} in ${{ env.CHARTS_DIRECTORY }}"
+            git push
+          else
+            echo "No changes to commit. El YAML ya estaba actualizado con la versión ${{ github.ref_name }}."
+          fi
+```
+
+In my case there are 2 sed because the image name is mentioned on 2 different sites on my future yaml that will make Argo work.
+
+And created 2 new environment variables for it to work on the env of the start:
+
+```yaml
+env:
+  DOCKER_BUILDKIT: 1
+  IMAGE_NAME: ghcr.io/000Volk000/echobot
+  CHARTS_REPOSITORY: 000Volk000/charts
+  CHARTS_DIRECTORY: echobot
+```
+
+You can push the changes to github but DON'T put a tag on it for now.
+
+For the workflow to work we need to create a Repository secret called exactly `CHARTS_REPO_PAT` to do so we go to our Repository -> Settings -> Secrets and Variables -> Actions -> New Repository Secret.
+
+In name we'll put `CHARTS_REPO_PAT` and in the content we'll put the same PAT that we put on Argo when created the repo.
+
+## Next Step
+
+That's done, we just need to create the .yaml files that need argo to make all work -> [Argo Workflow](Argo%20Workflow.md)
