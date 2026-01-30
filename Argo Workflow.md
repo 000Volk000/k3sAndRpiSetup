@@ -106,3 +106,23 @@ spec:
 Once created the yamls that you need, you should go to the original repo and add a new tag to make it trigger the workflow and change the tag on the chart repo.
 
 ## Argo Setups
+
+Lastly lets create the app on Argo, to do so go to the web -> Applications -> New app and fill the fields with the things we just did
+
+<div align="center">
+  <img src="assets/gitOps/argo/argo1.png" alt="argo1" width="650">
+</div>
+
+<div align="center">
+  <img src="assets/gitOps/argo/argo2.png" alt="argo2" width="650">
+</div>
+
+<div align="center">
+  <img src="assets/gitOps/argo/argo3.png" alt="argo3" width="300">
+</div>
+
+Once finished press create and it should work flawlessly.
+
+## FINISH
+
+And that's it, your app will be running flawlessly, you can add all the apps you can think and if you follow the steps it should have an auto deployment always that you add a new version to your deployed apps
