@@ -13,7 +13,7 @@ Be careful not to put any extra space or symbol, once done that and rebooted we 
 Lets download it with the install script with:
 
 ```bash
-curl -sfL https://get.k3s.io | sh -
+curl -sfL https://get.k3s.io | sh -s - server --secrets-encryption
 ```
 
 And that is really it, the script should install and configure everything so we can use our k3s cluster and it starting again when rebooted because of a systemd service.
@@ -45,3 +45,47 @@ And reboot the k3s service:
 ```bash
 sudo systemctl restart k3s
 ```
+
+## SSL/TLS certificate
+
+Lastly on this section lets make that traefik use our ssl/tls certificate for all the incoming communications, to do that we'll follow some steps.
+
+We'll create a kubernetes tls secret with:
+
+```bash
+sudo kubectl create secret tls tls-cert \
+  --cert=path/to/cert/file \
+  --key=path/to/key/file
+  -n kube-system
+```
+
+Once done, lets create a file on `~/k3s/traefik/traefik-config.yaml` where we'll configure traefic to work with the created secret.
+
+```bash
+mkdir -p ~/k3s/traefik
+vim.tiny ~/k3s/traefik/traefik-config.yaml
+```
+
+Inside the file, lets put:
+
+```yaml
+apiVersion: traefik.io/v1alpha1
+kind: TLSStore
+metadata:
+  name: default
+  namespace: kube-system
+
+spec:
+  defaultCertificate:
+    secretName:  tls-cert
+```
+
+Lastly apply it with
+
+```bash
+sudo kubectl apply -f ~/k3s/traefik/traefik-config.yaml
+```
+
+## Next Step
+
+All the k3s initial installation and configuration is done, the next thing we are going to do is to configure the auto-detect and release of packages when a change is made on github -> [K3S Continuous Deployment](K3S%20Continuous%20Deployment.md)
