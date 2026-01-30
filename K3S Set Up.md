@@ -86,6 +86,36 @@ Lastly apply it with
 sudo kubectl apply -f ~/k3s/traefik/traefik-config.yaml
 ```
 
+### Redirect traefik to ssl/tls
+
+To make the certificate we just set work, lets make that if a connection comes to the http (port 80) it's redirected to the https (port 443).
+
+Lets create the `~/k3s/traefik/traefik-redirect.yaml` with this config:
+
+```yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+
+spec:
+  valuesContent: |-
+    ports:
+      web:
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+            permanent: true
+```
+
+And apply it with
+
+```bash
+sudo kubectl apply -f ~/k3s/traefik/traefik-redirect.yaml
+```
+
 ## Next Step
 
 All the k3s initial installation and configuration is done, the next thing we are going to do is to configure the auto-detect and release of packages when a change is made on github -> [K3S Continuous Deployment](K3S%20Continuous%20Deployment.md)
