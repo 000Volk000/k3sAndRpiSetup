@@ -65,3 +65,24 @@ Now login to the web on `argocd.example.com` with the user admin and the passwor
 
 Inside go to User Info -> Update Password and change the password to a new one.
 
+To do our continuous update, we'll create a new private repository on github called charts and inside, we'll put a directory for each app, with all the required .yaml to the app to work.
+
+Once created the `charts` repository, create another PAT on github, this time with all the repo options enabled:
+
+<div align="center">
+  <img src="assets/k3s/cdConfig/githubPAT.png" alt="githubPAT" width="500">
+</div>
+
+Then, inside ArgoCD go to Settings -> Repositories -> Connect Repo.
+
+There select the connection method `Via HTTP/HTTPS` and fullfill all the fields, putting the new PAT on the password field:
+
+<div align="center">
+  <img src="assets/k3s/cdConfig/argoCharts.png" alt="argoCharts" width="500">
+</div>
+
+Then you can press connect and it should appear Successful as the connection status.
+
+## Next Step
+
+And that's it with the config, now we just need to deploy our apps and create the directory on charts, how to do all the workflow will be explained on the next section -> [App Deployment](App%20Deployment.md)

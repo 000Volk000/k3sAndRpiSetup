@@ -34,6 +34,9 @@ This are the exact materials i made this setup work, they can vary in your case:
 - [K3S](K3S.md)
 	- [K3S Set Up](K3S%20Set%20Up.md)
 	- [K3S Continuous Deployment](K3S%20Continuous%20Deployment.md)
+- [App Deployment](App%20Deployment.md)
+	- [Github Workflow](Github%20Workflow.md)
+	- [Argo Workflow](Argo%20Workflow.md)
 ## License
 Created under the MIT License. See [LICENSE](https://github.com/000Volk000/k3sAndRpiSetup/blob/main/LICENSE) for more information.
 
