@@ -4,9 +4,9 @@
 
 To work, kubernetes need to have the apps on a docker container, so we need to first of all create a container on ghcr.io with our app.
 
-To do it, firstly you need to create a Dockerfile with the needs of your app (Remember to use a base image that can run on arm), in this case i'll showcase how i did to deploy my discord bot [echobot](https://github.com/000Volk000/echoBot).
+To do it, firstly you need to create a Dockerfile with the needs of your app (Remember to use a base image that can run on arm).
 
-In my case the Dockerfile ended like this:
+As an example, this is the Dockerfile of my discord bot  [echobot](https://github.com/000Volk000/echoBot):
 
 ```Dockerfile
 FROM python:3.14 AS echobot
@@ -38,7 +38,7 @@ on:
 
 env:
   DOCKER_BUILDKIT: 1
-  IMAGE_NAME: ghcr.io/000Volk000/echobot
+  IMAGE_NAME: ghcr.io/<user>/<app>
 
 jobs:
   build-and-push:
@@ -70,7 +70,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          target: echoBot
+          target: <Docker Name (from --- as name)>
           platforms: linux/amd64,linux/arm64
           tags: |
             ${{ env.IMAGE_NAME }}:latest
@@ -82,8 +82,8 @@ jobs:
 Thats it, you can make all the changes that you want and when you push a commit and add a tag (You can do so with the next commands)
 
 ```bash
-git tag v1.0.0                    
-git push origin v1.0.0
+git tag vx.x.x                    
+git push origin vx.x.x
 ```
 
 It will automatically trigger and push the image to the ghcr.io repo.
@@ -112,7 +112,6 @@ To do so, i'll add the following section to our `.github/workflows/deploy.yaml`:
           TARGET_DIR="charts/${{ env.CHARTS_DIRECTORY }}"
 
           sed -i "s|image: ${{ env.IMAGE_NAME }}:.*|image: ${{ env.IMAGE_NAME }}:$NEW_TAG|g" "$TARGET_DIR/deployment.yaml"
-          sed -i "s|image: ${{ env.IMAGE_NAME }}:.*|image: ${{ env.IMAGE_NAME }}:$NEW_TAG|g" "$TARGET_DIR/bingbong-cronjob.yaml"
 
       - name: Commit and push changes
         run: |
@@ -129,23 +128,23 @@ To do so, i'll add the following section to our `.github/workflows/deploy.yaml`:
           fi
 ```
 
-In my case there are 2 sed because the image name is mentioned on 2 different sites on my future yaml that will make Argo work.
+See the `sed` on the task "Update image tag"? That is the command that changes the version on the deploy.yaml file we'll make on the next section, if you have the image on any other yaml, copy-paste the sed line and change the deployment.yaml of the end to the desired .yaml (This will be needed on CronJobs).
 
-And created 2 new environment variables for it to work on the env of the start:
+And created 2 new environment variables (CHARTS_REPOSITORY and CHARTS_DIRECTORY) for it to work at the env of the start:
 
 ```yaml
 env:
   DOCKER_BUILDKIT: 1
-  IMAGE_NAME: ghcr.io/000Volk000/echobot
-  CHARTS_REPOSITORY: 000Volk000/charts
-  CHARTS_DIRECTORY: echobot
+  IMAGE_NAME: ghcr.io/<user>/<app>
+  CHARTS_REPOSITORY: <user>/charts
+  CHARTS_DIRECTORY: <app>
 ```
 
-You can push the changes to github but DON'T put a tag on it for now.
+You can push the changes to github but DON'T put a tag on it for the moment.
 
-For the workflow to work we need to create a Repository secret called exactly `CHARTS_REPO_PAT` to do so we go to our Repository -> Settings -> Secrets and Variables -> Actions -> New Repository Secret.
+For make the workflow work, we need to create a `repository secret` called exactly `CHARTS_REPO_PAT` to do so, we go to our Repository -> Settings -> Secrets and Variables -> Actions -> New Repository Secret.
 
-In name we'll put `CHARTS_REPO_PAT` and in the content we'll put the same PAT that we put on Argo when created the repo.
+In name we'll put `CHARTS_REPO_PAT` and in the content we'll put the same PAT that we put on Argo when initialized the charts repo on it.
 
 ## Next Step
 
