@@ -15,6 +15,15 @@ sudo kubectl create secret generic <app>-secrets \
 ```
 
 You can concatenate as much `--from-literal=<key>='<value>'` on the same command as you need for your case.
+
+To add new key-values to the same app after the initial command, you can do:
+
+```bash
+kubectl patch secret <app>-secrets -n <app>-ns \
+  --type='merge' \
+  -p '{"stringData":{"<key>":"<value>"}}'
+```
+
 ## Charts
 
 Now, to finish all of this, lets go to our charts repository and create a directory called exactly as we put it on the `.github/workflows/deploy.yaml` file of the github workflow  (The environment variable `CHARTS_DIRECTORY`).
