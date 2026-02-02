@@ -16,7 +16,7 @@ sudo kubectl create secret generic <app>-secrets \
 
 You can concatenate as much `--from-literal=<key>='<value>'` on the same command as you need for your case.
 
-To add new key-values to the same app after the initial command, you can do:
+To add new or patch existent key-values to an existent app after the initial command, you can do:
 
 ```bash
 kubectl patch secret <app>-secrets -n <app>-ns \
