@@ -34,4 +34,4 @@ And just like before, if you wait to the DNS propagation to make effect you can 
 </div>
 
 ## Next Step
-Now we have a domain and any subdomain pointing to our IP address but we need to get the ssl/tls certificate and make it Dynamic so if our ip address change it doesn't break anything -> [DDNS Instalation](DDNS%20Instalation.md)
+Now we have a domain and any subdomain pointing to our IP address but we need to get the ssl/tls certificate and make it Dynamic so if our ip address change it doesn't break anything -> [DDNS Installation](DDNS%20Installation.md)
