@@ -77,7 +77,7 @@ metadata:
 
 spec:
   defaultCertificate:
-    secretName:  tls-cert
+    secretName: tls-cert
 ```
 
 Lastly apply it with
@@ -119,3 +119,4 @@ sudo kubectl apply -f ~/k3s/traefik/traefik-redirect.yaml
 ## Next Step
 
 All the k3s initial installation and configuration is done, the next thing we are going to do is to configure the auto-detect and release of packages when a change is made on github -> [K3S Continuous Deployment](K3S%20Continuous%20Deployment.md)
+

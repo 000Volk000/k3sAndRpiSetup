@@ -26,7 +26,7 @@ kubectl patch secret <app>-secrets -n <app>-ns \
 
 ## Charts
 
-Now, to finish all of this, lets go to our charts repository and create a directory called exactly as we put it on the `.github/workflows/deploy.yaml` file of the github workflow  (The environment variable `CHARTS_DIRECTORY`).
+Now, to finish all of this, lets go to our charts repository and create a directory called exactly as we put it on the `.github/workflows/deploy.yaml` file of the github workflow (The environment variable `CHARTS_DIRECTORY`).
 
 ```bash
 mkdir <CHARTS_DIRECTORY>
@@ -73,7 +73,7 @@ spec:
                   key: <key>
 ```
 
-	You can concat all the environment variables that you need at the end of the file or put none
+    You can concat all the environment variables that you need at the end of the file or put none
 
 - `service.yaml` this is the file that says how the app will behave to the world:
 
@@ -93,10 +93,9 @@ spec:
   selector:
     app: <app>
     tier: <backend/frontend>
-
 ```
 
--  `ingress.yaml` is the endpoint that will be public to access our app to the port specified on the service.yaml:
+- `ingress.yaml` is the endpoint that will be public to access our app to the port specified on the service.yaml:
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -119,7 +118,6 @@ spec:
                 name: <app>-service
                 port:
                   number: <Port where the app is running inside the container>
-
 ```
 
 - `cronjob.yaml` is the equivalent of making a cron on linux or a systemd timer, it'll execute a command inside a image every time you specify it to.
@@ -170,10 +168,10 @@ spec:
       storage: <Storage needed, for example 1Gi>
 ```
 
-	If you create a PersistentVolumeClaim you should mount it on the directory you want it to be on the deploy.yaml or cronjob.yaml
+    If you create a PersistentVolumeClaim you should mount it on the directory you want it to be on the deploy.yaml or cronjob.yaml
 
->[!NOTE]
->These files are an example of how you can do it, you should create all the .yaml you need for your app with all your needs inside. 
+> [!NOTE]
+> These files are an example of how you can do it, you should create all the .yaml you need for your app with all your needs inside.
 
 Once created all the files that you need, you should go to the original repo (Where we created the github workflow) and add a new tag to make it trigger the workflow and change the tag on the chart repo with the sed commands.
 
@@ -182,6 +180,7 @@ Once created all the files that you need, you should go to the original repo (Wh
 Lastly lets create the app on ArgoCD, this gets all the .yaml on the directory that you did on the charts repo and deploy your app into your cluster, to do so go to the web app on argocd.example.com -> Applications -> New app and fill the fields with the things we just did.
 
 In the General section:
+
 - Fill the application name with your desired name to appear on ArgoCD for you to know which app is wich.
 - Project name is a menu with only 1 option, select it
 - In sync policy put it on automatic and enable all 3 checkboxes
@@ -191,10 +190,12 @@ In the General section:
 </div>
 
 On the Source section:
+
 - The repository url is a menu with only 1 option, select it
 - On path, type the directory all your .yaml are inside the charts repo (CHARTS_DIRECTORY)
 
 On the Destination section:
+
 - The cluster url is a menu with only 1 option, pick it
 - In namespace put the namespace you created before (app-ns)
 
@@ -207,3 +208,4 @@ Let the rest as is, and press the upper button `create` and it should deploy you
 ## FINISH
 
 And that's it, your app will be running flawlessly, you can add all the apps you can think and if you follow the steps it should have an automated deployment always that you add a new version tag to your github repo of the app.
+

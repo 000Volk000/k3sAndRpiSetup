@@ -20,19 +20,19 @@ kind: Ingress
 metadata:
   name: argocd-server-ingress
   namespace: argocd
-  
+
 spec:
   rules:
-  - host: argocd.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              name: http
+    - host: argocd.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: http
 ```
 
 And apply it with:
@@ -86,3 +86,4 @@ Then you can press connect and it should appear Successful as the connection sta
 ## Next Step
 
 And that's it with the config, now we just need to deploy our apps and create the directory on charts, how to do all the workflow will be explained on the next section -> [App Deployment](App%20Deployment.md)
+

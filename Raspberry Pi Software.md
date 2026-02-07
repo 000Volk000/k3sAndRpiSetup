@@ -1,6 +1,9 @@
 # Raspberry Pi Hardware
+
 ## O.S. Installation
+
 To get the operative system running we need the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) software and an microSD connected to our PC.
+
 <div align="center">
   <img src="assets/software/os/rpiImager.png" alt="rpiImager" width="500">
 </div>
@@ -11,6 +14,7 @@ Now lets follow the steps, for this project i'll pick the Raspberry Pi OS Lite (
 Pick the microSD that is connected to your computer and fulfill the following questions that asks.
 
 We don't have to configure the WiFi because we are using the ethernet port.
+
 <div align="center">
   <img src="assets/software/os/wifi.png" alt="wifi" width="500">
 </div>
@@ -22,11 +26,12 @@ And lets keep disabled the Raspberry Pi Connect.
 
 Thats done, now connect the ethernet cable from the raspberry to your router, put on the microSD we just made and connect the power suply to make it start.
 
-
 ## NVMe Drive as Main
+
 Once connected and running, we'll access it via ssh to make the nvme be the OS host and only disk.
 
 To get the current assigned ip we'll watch on the router's admin web which device is connected to the LAN and what is his ip address
+
 <div align="center">
   <img src="assets/software/osConfig/ip.png" alt="ip" width="300">
 </div>
@@ -41,12 +46,14 @@ sudo apt update && sudo apt upgrade -y
 sudo rpi-eeprom-update -a
 sudo reboot
 ```
+
 Now, lets check if our Raspberry Pi can read the NVMe that we installed on the pimroni base to do that you should check if the /dev/nvme0n1 appears on your system, you can watch it with this commands:
 
 ```bash
 lsblk
 ls /dev/nvme0
 ```
+
 <div align="center">
   <img src="assets/software/osConfig/lsblk.png" alt="lsblk" width="400">
 </div>
@@ -57,16 +64,19 @@ We'll install the Raspberry Pi Imager software on our Raspberry so we can instal
 ```bash
 sudo apt install rpi-imager libopengl0 ffmpeg libsm6 libxext6 libegl1 -y
 ```
+
 Now, we need to make ssh with the -X flag
 
 ```bash
 ssh -X name@ip
 ```
+
 Execute the rpi-imager with
 
 ```bash
 sudo -E rpi-imager
 ```
+
 And fulfill every step like we did the first time with the microSD (Be patient is going to be slow).
 
 Once done we can shutdown our Raspberry Pi and remove the microSD and it should boot nicely from the NVMe.
@@ -92,6 +102,7 @@ sudo dpkg-reconfigure --priority=low unattended-upgrades
 And lastly press enter on the pop-up menu, that's it.
 
 ## O.S. Config
+
 We'll do that when we shutdown our Raspberry the pciexpress port shutdowns too, so we can avoid data loss and similar related things:
 
 To do that we'll need to change POWER_OFF_ON_HALT to 1 on the eeprom (bootloader) of the Raspberry, so, to edit it let's do:
@@ -99,16 +110,19 @@ To do that we'll need to change POWER_OFF_ON_HALT to 1 on the eeprom (bootloader
 ```bash
 sudo rpi-eeprom-config -e
 ```
+
 And change or add the next line:
 
 ```bash
 POWER_OFF_ON_HALT=1
 ```
+
 And lastly we'll change some ssh config to prevent attacks, to do that lets modify the sshd_config.
 
 ```bash
 sudo vim.tiny /etc/ssh/sshd_config
 ```
+
 Once inside, we'll comment everything, only having the next lines:
 
 ```bash
@@ -118,8 +132,9 @@ AuthorizedKeysFile      .ssh/authorized_keys
 PasswordAuthentication no
 Subsystem       sftp    /usr/lib/openssh/sftp-server
 ```
+
 Thats all we need to do on the OS, we didnt put a firewall like iptables because we are going to port forward only the port 22, 80 and 443 so every attack to any other port will not work and stay at the router.
 
-
 ## Next Step
+
 All the software initial installation and configuration is done, the next thing we are going to do is to configure the router to give the Raspberry Pi an static ip address and port forwarding -> [Router Configuration](Router%20Configuration.md)
