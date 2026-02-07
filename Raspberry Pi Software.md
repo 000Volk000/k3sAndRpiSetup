@@ -71,6 +71,25 @@ And fulfill every step like we did the first time with the microSD (Be patient i
 
 Once done we can shutdown our Raspberry Pi and remove the microSD and it should boot nicely from the NVMe.
 
+## Auto Updates
+
+I'll put that our system update itself automatically to get all the security updates.
+
+To download the needed packet run:
+
+```bash
+sudo apt update
+sudo apt dist-upgrade
+sudo apt install unattended-upgrades
+```
+
+Once downloaded, run the following:
+
+```bash
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+```
+
+And lastly press enter on the pop-up menu, that's it.
 
 ## O.S. Config
 We'll do that when we shutdown our Raspberry the pciexpress port shutdowns too, so we can avoid data loss and similar related things:
