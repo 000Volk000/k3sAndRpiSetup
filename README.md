@@ -33,16 +33,16 @@ These are the exact materials i made this setup work, they can vary in your case
 
 ## Index
 
-- [Setup](Set%20Up.md)
+- [Setup](Setup.md)
   - [Raspberry Pi Hardware](Raspberry%20Pi%20Hardware.md)
   - [Raspberry Pi Software](Raspberry%20Pi%20Software.md)
   - [Router Configuration](Router%20Configuration.md)
   - [DNS Configuration](DNS%20Configuration.md)
-- [DDNS Installation](DDNS%20Instalation.md)
+- [DDNS Installation](DDNS%20Installation.md)
   - [SSL-TLS Certificate](SSL-TLS%20Certificate.md)
   - [DNS Update](DNS%20Update.md)
 - [K3S](K3S.md)
-  - [K3S Setup](K3S%20Set%20Up.md)
+  - [K3S Setup](K3S%20Setup.md)
   - [K3S Continuous Deployment](K3S%20Continuous%20Deployment.md)
 - [App Deployment](App%20Deployment.md)
   - [Github Workflow](Github%20Workflow.md)
