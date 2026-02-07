@@ -71,7 +71,7 @@ And fulfill every step like we did the first time with the microSD (Be patient i
 
 Once done we can shutdown our Raspberry Pi and remove the microSD and it should boot nicely from the NVMe.
 
-## Auto Updates
+## Automatic Security Updates
 
 I'll put that our system update itself automatically to get all the security updates.
 
