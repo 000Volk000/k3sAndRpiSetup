@@ -160,6 +160,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: <app>-pvc
+  namespace: <app>-ns
 spec:
   accessModes:
     - ReadWriteOnce
