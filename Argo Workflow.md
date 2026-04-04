@@ -43,7 +43,7 @@ There are some examples of files you might use:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment
+  name: <app>-deployment
   namespace: <app>-ns
 spec:
   selector:
